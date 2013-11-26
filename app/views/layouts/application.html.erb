@@ -10,12 +10,12 @@
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
 	<% if user_signed_in? %>
-	Jesteś zalogowany jako <%= current_user.username %>
-	<%= link_to "Wyloguj się", destroy_user_session_path, method: :delete %>
+	You are logged in as <%= current_user.username %>
+	<%= link_to "Logout", destroy_user_session_path, method: :delete %>
 	<% else %>
-	Nie jesteś zalogowany
-	<%= link_to "Zaloguj się", new_user_session_path %>
-	<%= link_to "Zarejestruj się", new_user_registration_path %>
+	You are not logged in
+	<%= link_to "Login", new_user_session_path %>
+	<%= link_to "Register", new_user_registration_path %>
 	<% end %>
 
 	<%= yield %>
