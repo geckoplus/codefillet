@@ -1,0 +1,13 @@
+<h1>CodeFillet</h1>
+
+<table>
+	<% @code_fillets.each do |code_fillet| %>
+	<tr>
+		<td><%= code_fillet.name%></td>
+		<td><%= code_fillet.description%></td>
+		<td><%= link_to "Zobacz tego fileta", code_fillet %></td>
+	</tr>
+	<% end %>
+</table>
+<%= link_to 'New', new_code_fillet_path(@code_fillet) %> |
+

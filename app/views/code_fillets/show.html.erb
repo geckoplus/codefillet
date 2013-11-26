@@ -1,0 +1,10 @@
+<h1>CODE FILET SHOW</h1>
+
+<h2><%= @code_fillet.name%></h2>
+<p><%= @code_fillet.description%></p>
+
+<%= link_to "Do spisu wszystkich filletów", code_fillets_path %>
+
+<% if @users_code_fillet %>
+	<%= link_to "EDYCJA ", edit_code_fillet_path(@code_fillet) %>
+<% end %>

@@ -17,20 +17,33 @@ describe CodeFillet do
 		@codefillet.description.should_not == nil
 	end 
 
-	it 'should have user creator' do
-		@codefillet.creator.class.should == User  
+	it 'should belong to user' do
+		@codefillet.should belong_to :user  
 	end
 
-	it 'should have snipped' do 
-		@codefillet.creator.class.should == Snippet
+	it 'should have snippets' do 
+		@codefillet.should have_many :snippets
 	end
 
 	it 'should have votes' do
-		@codefillet.creator.class.should == Votes 
+		@codefillet.should have_many :votes 
 	end
 
 	it 'should have tags' do 
-		@codefillet.creator.class.should == Tags
+		@codefillet.should have_many :tags
+	end
+
+	it 'should have published attribute' do
+		@codefillet.should respond_to :published 
+	end
+
+	it 'should be unpublished by default' do
+		cf = CodeFillet.new
+		cf.published.should == false 
+	end
+
+	it 'should belongs to user' do
+		@codefillet.should belong_to :user
 	end
 
 	
