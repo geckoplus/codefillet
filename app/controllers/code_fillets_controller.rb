@@ -1,5 +1,5 @@
 class CodeFilletsController < ApplicationController
-  before_action :authenticate_user! , :only =>[:new]
+  before_action :authenticate_user! , :only =>[:new,:edit]
 
 
   # GET /code_fillets/
@@ -9,14 +9,13 @@ class CodeFilletsController < ApplicationController
   end
 
   def active
-     @code_fillets = CodeFillet.where(active: true)
-     render :index
-  end
+   @code_fillets = CodeFillet.where(active: true)
+   render :index
+ end
 
 
   # GET /code_fillets/:id
   def show
-  	@users_code_fillet = true
   	@code_fillet = CodeFillet.find params[:id]
   end
 
@@ -25,22 +24,33 @@ class CodeFilletsController < ApplicationController
   end
 
   def create
-    permitted_params = params.require(:code_fillet).permit(:name, :description,:active)
     @code_fillet = CodeFillet.new permitted_params
-    @code_fillet.save 
-    redirect_to @code_fillet
+    if @code_fillet.save
+      #ZAPISALO 
+      redirect_to @code_fillet
+    else
+      #NIE ZAPISALO
+      render :new
+    end
   end
 
   def edit
     @code_fillet = CodeFillet.find params[:id]
   end
 
-def update
-  @code_fillet = CodeFillet.find params[:id]
-  permitted_params = params.require(:code_fillet).permit(:name, :description,:active)
-  @code_fillet.update_attributes permitted_params
-  @code_fillet.save
-  redirect_to @code_fillet
-end
+  def update
+    @code_fillet = CodeFillet.find params[:id]
+    @code_fillet.update_attributes permitted_params
+    if @code_fillet.save
+      redirect_to @code_fillet
+    else
+      render :new
+    end
+  end
+
+  protected
+  def permitted_params
+    params.require(:code_fillet).permit(:name, :description,:active)
+  end
 
 end

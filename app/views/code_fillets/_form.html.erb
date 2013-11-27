@@ -1,5 +1,18 @@
 <%= form_for @code_fillet do |f| %>
- 
+  <% if @code_fillet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@code_fillet.errors.count, "error") %> prohibited this code fillet from being saved:</h2>
+
+      <ul>
+      <% @code_fillet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>

@@ -1,38 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<tittle><h1>CodeFillet</h1></title>	
-	
+
+	<tittle><h1><%= link_to "Code Fillet", code_fillets_path %></h1></title>	
+
 	</head>
 	<body>
 
 		<table>
-		<thead>
-		<th><h2>Name</h2></th>
-		<th><h2>Description</h2></th>
-		</thead>
-		<tbody>
+			<thead>
+				<th><h2>Name</h2></th>
+				<th><h2>Description</h2></th>
+				<th><h2>Active</h2></th>
+				<th><h2>Action</h2></th>
+			</thead>
+			<tbody>
 
-			<% @code_fillets.each do |code_fillet| %>
+				<% @code_fillets.each do |code_fillet| %>
 
-			<tr>
-				<td><%= code_fillet.name%></td>
-				<td><%= code_fillet.description%></td>
-				<td><%= link_to "Zobacz tego fileta", code_fillet %></td>
-			</tr>
-			<% end %>
-		</tbody>	
+				<tr>
+					<td><%= code_fillet.name%></td>
+					<td><%= code_fillet.description%></td>
+					<td>
+							<% if code_fillet.active? %>
+								<%= form_for code_fillet do |f|%>
+									<%= f.hidden_field :active, value: false %>
+									<%= f.submit "Unpublish"%>
+								<% end %>
+							<% else%>
+								<%= form_for code_fillet do |f|%>
+									<%= f.hidden_field :active, value: true %>
+									<%= f.submit "Publish"%>
+								<% end %>
+							<% end%>
+					</td>
+					<td><%= link_to "Show this CodeFillet", code_fillet %></td>
+				</tr>
+				<% end %>
+			</tbody>	
 		</table>
-       
-        </br>
 
-		<% if current_user %>
-		<%= link_to 'Create new CodeFillet', new_code_fillet_path(@code_fillet) %> |
-		<% end %>
-		code_fillet
+	</br>
 
+	<% if current_user %>
+	<%= link_to 'Create new CodeFillet', new_code_fillet_path(@code_fillet) %> |
+	<% end %>
 
 
 
-	</body>
-	</html>
+
+
+</body>
+</html>

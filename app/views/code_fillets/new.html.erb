@@ -1,14 +1,5 @@
 <h1>New CodeFillet</h1>
 
-<h2><%= @code_fillet.name%></h2>
-<p><%= @code_fillet.description%></p>
-
-<%= link_to "Browse all CodeFillet's", code_fillets_path %>
-
-<% if @users_code_fillet %>
-	<%= link_to "Create new CodeFillet", new_code_fillet_path(@code_fillet) %>
-<% end %>
-
 <%= render 'form' %>
 
 <%= link_to 'Back', code_fillets_path %>

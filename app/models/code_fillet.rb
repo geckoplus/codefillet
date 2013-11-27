@@ -6,6 +6,7 @@ class CodeFillet < ActiveRecord::Base
 	has_many :tags
 	belongs_to :user
 
+	validates :name, length: {minimum: 4}
 
 
 
