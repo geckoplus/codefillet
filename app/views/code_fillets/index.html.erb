@@ -22,6 +22,7 @@
 					<td><%= code_fillet.name%></td>
 					<td><%= code_fillet.description%></td>
 					<td>
+					        <% if current_user %>
 							<% if code_fillet.active? %>
 								<%= form_for code_fillet do |f|%>
 									<%= f.hidden_field :active, value: false %>
@@ -33,6 +34,8 @@
 									<%= f.submit "Publish"%>
 								<% end %>
 							<% end%>
+							<% end %>
+
 					</td>
 					<td><%= link_to "Show this CodeFillet", code_fillet %></td>
 				</tr>

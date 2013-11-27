@@ -48,6 +48,10 @@ class CodeFilletsController < ApplicationController
     end
   end
 
+  def destroy
+    @code_fillet = CodeFillet.destroy permitted_params
+  end
+
   protected
   def permitted_params
     params.require(:code_fillet).permit(:name, :description,:active)
