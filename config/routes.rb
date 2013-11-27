@@ -1,6 +1,10 @@
 Codefillet::Application.routes.draw do
   devise_for :users
-  resources :code_fillets 
+  resources :code_fillets do
+     collection do
+        get 'active'
+     end
+  end 
   
   root :to => "code_fillets#index"
 

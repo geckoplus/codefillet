@@ -8,6 +8,12 @@ class CodeFilletsController < ApplicationController
   	@code_fillets = CodeFillet.all
   end
 
+  def active
+     @code_fillets = CodeFillet.where(active: true)
+     render :index
+  end
+
+
   # GET /code_fillets/:id
   def show
   	@users_code_fillet = true
