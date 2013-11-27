@@ -1,1 +1,21 @@
-<%= render_activities(@activities) %>
+<table>
+			<thead>
+				<th><h2>Name</h2></th>
+				<th><h2>Description</h2></th>
+				<th><h2>Author</h2></th>
+			</thead>
+			<tbody>
+
+				<% @code_fillets.each do |code_fillet| %>
+				<tr>
+					<td><%= code_fillet.name%></td>
+					<td><%= code_fillet.description%></td>
+					<% if code_fillet.user %>
+					<td><%= code_fillet.user.username%></td>
+					<% else %>
+					<td>No user</td>
+					<% end %>
+				</tr>	
+                <% end %>
+			</tbody>	
+	</table>

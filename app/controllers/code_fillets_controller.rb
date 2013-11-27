@@ -1,5 +1,6 @@
 class CodeFilletsController < ApplicationController
   before_action :authenticate_user! , :only =>[:new,:edit]
+  before_action :find_user, :only =>[:new,:create]
 
 
   # GET /code_fillets/
@@ -24,7 +25,7 @@ class CodeFilletsController < ApplicationController
   end
 
   def create
-    @code_fillet = CodeFillet.new permitted_params
+    @code_fillet = @user.code_fillets.new permitted_params
     if @code_fillet.save
       #ZAPISALO 
       redirect_to @code_fillet
@@ -54,7 +55,11 @@ class CodeFilletsController < ApplicationController
 
   protected
   def permitted_params
-    params.require(:code_fillet).permit(:name, :description,:active)
+    params.require(:code_fillet).permit(:name, :description,:active,:user_id)
+  end
+
+  def find_user
+     @user = current_user
   end
 
 end
