@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131123121959) do
+ActiveRecord::Schema.define(version: 20131127085030) do
 
   create_table "code_fillets", force: true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20131123121959) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.boolean  "active"
   end
 
   add_index "code_fillets", ["user_id"], name: "index_code_fillets_on_user_id"
