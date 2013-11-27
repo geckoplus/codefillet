@@ -1,15 +1,38 @@
-<h1>CodeFillet</h1>
+<!DOCTYPE html>
+<html>
+<head>
+	<tittle><h1>CodeFillet</h1></title>	
+	
+	</head>
+	<body>
 
-<table>
-	<% @code_fillets.each do |code_fillet| %>
-	<tr>
-		<td><%= code_fillet.name%></td>
-		<td><%= code_fillet.description%></td>
-		<td><%= link_to "Zobacz tego fileta", code_fillet %></td>
-	</tr>
-	<% end %>
-</table>
+		<table>
+		<thead>
+		<th><h2>Name</h2></th>
+		<th><h2>Description</h2></th>
+		</thead>
+		<tbody>
 
-<% if current_user %>
-<%= link_to 'Create new CodeFillet', new_code_fillet_path(@code_fillet) %> |
-<% end %>
+			<% @code_fillets.each do |code_fillet| %>
+
+			<tr>
+				<td><%= code_fillet.name%></td>
+				<td><%= code_fillet.description%></td>
+				<td><%= link_to "Zobacz tego fileta", code_fillet %></td>
+			</tr>
+			<% end %>
+		</tbody>	
+		</table>
+       
+        </br>
+
+		<% if current_user %>
+		<%= link_to 'Create new CodeFillet', new_code_fillet_path(@code_fillet) %> |
+		<% end %>
+		code_fillet
+
+
+
+
+	</body>
+	</html>

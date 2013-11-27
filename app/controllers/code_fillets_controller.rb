@@ -6,7 +6,6 @@ class CodeFilletsController < ApplicationController
   # w przyszlosci GET /code_fillets/?tag=rails => Tag.find(params[:tag]).code_fillets
   def index
   	@code_fillets = CodeFillet.all
-  	render "index"
   end
 
   # GET /code_fillets/:id
