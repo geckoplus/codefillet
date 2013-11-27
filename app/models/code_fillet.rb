@@ -1,5 +1,7 @@
 class CodeFillet < ActiveRecord::Base
-   
+    include PublicActivity::Model
+    tracked
+
 
 	has_many :snippets
 	has_many :votes

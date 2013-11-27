@@ -1,4 +1,5 @@
 Codefillet::Application.routes.draw do
+  get "home/index"
   devise_for :users
   resources :code_fillets do
      collection do
