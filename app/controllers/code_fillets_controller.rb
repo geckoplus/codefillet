@@ -1,7 +1,7 @@
 class CodeFilletsController < ApplicationController
   before_action :authenticate_user! , :only =>[:new,:edit]
   before_action :find_user, :only =>[:new,:create]
-
+  before_action :find_code_fillet, :only =>[:show,:update,:destroy]
 
   # GET /code_fillets/
   # w przyszlosci GET /code_fillets/?tag=rails => Tag.find(params[:tag]).code_fillets
@@ -17,7 +17,7 @@ class CodeFilletsController < ApplicationController
 
   # GET /code_fillets/:id
   def show
-  	@code_fillet = CodeFillet.find params[:id]
+  	
   end
 
   def new
@@ -40,7 +40,6 @@ class CodeFilletsController < ApplicationController
   end
 
   def update
-    @code_fillet = CodeFillet.find params[:id]
     @code_fillet.update_attributes permitted_params
     if @code_fillet.save
       redirect_to @code_fillet
@@ -50,7 +49,8 @@ class CodeFilletsController < ApplicationController
   end
 
   def destroy
-    @code_fillet = CodeFillet.destroy permitted_params
+    @code_fillet.destroy
+    redirect_to root_path
   end
 
   protected
@@ -60,6 +60,10 @@ class CodeFilletsController < ApplicationController
 
   def find_user
      @user = current_user
+  end
+
+  def find_code_fillet
+    @code_fillet = CodeFillet.find params[:id]
   end
 
 end

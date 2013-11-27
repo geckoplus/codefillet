@@ -1,4 +1,16 @@
-<table>
+<!DOCTYPE html>
+<html>
+<head>
+
+	<tittle><h1><%= link_to "Code Fillet", code_fillets_path %></h1></title> 
+		<% if current_user %>
+		<%= link_to 'Create new CodeFillet', new_code_fillet_path(@code_fillet) %>
+
+		<% end %>
+
+	</head>
+	<body>
+		<table>
 			<thead>
 				<th><h2>Name</h2></th>
 				<th><h2>Description</h2></th>
@@ -16,6 +28,9 @@
 					<td>No user</td>
 					<% end %>
 				</tr>	
-                <% end %>
+				<% end %>
 			</tbody>	
-	</table>
+		</table>
+
+	</body>
+	</html>

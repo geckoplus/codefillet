@@ -2,7 +2,10 @@
 <html>
 <head>
 
-	<tittle><h1><%= link_to "Code Fillet", code_fillets_path %></h1></title>	
+	<tittle><h1><%= link_to "Code Fillet", home_index_path %></h1></title> |
+		<% if current_user %>
+		<%= link_to 'Create new CodeFillet', new_code_fillet_path(@code_fillet) %> 
+		<% end %>	
 
 	</head>
 	<body>
@@ -11,7 +14,9 @@
 			<thead>
 				<th><h2>Name</h2></th>
 				<th><h2>Description</h2></th>
+				<% if current_user %>
 				<th><h2>Active</h2></th>
+				<% end %>
 				<th><h2>Action</h2></th>
 			</thead>
 			<tbody>
@@ -19,39 +24,33 @@
 				<% @code_fillets.each do |code_fillet| %>
 
 				<tr>
-					<td><%= code_fillet.name%></td>
+					<td><%= link_to code_fillet.name, code_fillet_path(code_fillet)%></td>
 					<td><%= code_fillet.description%></td>
-					<td>
-					        <% if current_user %>
-							<% if code_fillet.active? %>
-								<%= form_for code_fillet do |f|%>
-									<%= f.hidden_field :active, value: false %>
-									<%= f.submit "Unpublish"%>
-								<% end %>
-							<% else%>
-								<%= form_for code_fillet do |f|%>
-									<%= f.hidden_field :active, value: true %>
-									<%= f.submit "Publish"%>
-								<% end %>
-							<% end%>
-							<% end %>
+					
+						<% if current_user %>
+						<td>
+						<% if code_fillet.active? %>
+						<%= form_for code_fillet do |f|%>
+						<%= f.hidden_field :active, value: false %>
+						<%= f.submit "Unpublish"%>
+						<% end %>
+						<% else%>
+						<%= form_for code_fillet do |f|%>
+						<%= f.hidden_field :active, value: true %>
+						<%= f.submit "Publish"%>
+						<% end %>
+						<% end%>
+						</td>
+						<% end %>
 
-					</td>
-					<td><%= link_to "Show this CodeFillet", code_fillet %></td>
+					
+					<td><%= link_to "EDIT", edit_code_fillet_path(code_fillet) %></td>
+					<td><%= link_to "Destroy", code_fillet_path(code_fillet), method: :delete %></td>
+				</tr>
 				</tr>
 				<% end %>
 			</tbody>	
 		</table>
 
-	</br>
-
-	<% if current_user %>
-	<%= link_to 'Create new CodeFillet', new_code_fillet_path(@code_fillet) %> |
-	<% end %>
-
-
-
-
-
-</body>
-</html>
+	</body>
+	</html>
