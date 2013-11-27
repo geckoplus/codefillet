@@ -20,7 +20,7 @@ class CodeFilletsController < ApplicationController
   end
 
   def create
-    permitted_params = params.require(:code_fillet).permit(:name, :description)
+    permitted_params = params.require(:code_fillet).permit(:name, :description,:active)
     @code_fillet = CodeFillet.new permitted_params
     @code_fillet.save 
     redirect_to @code_fillet
@@ -32,7 +32,7 @@ class CodeFilletsController < ApplicationController
 
 def update
   @code_fillet = CodeFillet.find params[:id]
-  permitted_params = params.require(:code_fillet).permit(:name, :description)
+  permitted_params = params.require(:code_fillet).permit(:name, :description,:active)
   @code_fillet.update_attributes permitted_params
   @code_fillet.save
   redirect_to @code_fillet
