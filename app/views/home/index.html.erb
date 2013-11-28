@@ -2,10 +2,10 @@
 <html>
 <head>
 
-	<tittle><h1><%= link_to "Code Fillet", code_fillets_path %></h1></title> 
+	<tittle><h1><%= link_to "Code Fillet", home_index_path %></h1></title> 
 		<% if current_user %>
-		<%= link_to 'Create new CodeFillet', new_code_fillet_path(@code_fillet) %>
-
+		<%= link_to 'Create new CodeFillet', new_code_fillet_path(@code_fillet) %> |
+		<%= link_to 'My Code Fillet', code_fillets_path(@code_fillet) %>
 		<% end %>
 
 	</head>
@@ -20,7 +20,7 @@
 
 				<% @code_fillets.each do |code_fillet| %>
 				<tr>
-					<td><%= code_fillet.name%></td>
+					<td><%= link_to code_fillet.name, code_fillet_path(code_fillet)%></td>
 					<td><%= code_fillet.description%></td>
 					<% if code_fillet.user %>
 					<td><%= code_fillet.user.username%></td>

@@ -4,7 +4,7 @@
 
 	<tittle><h1><%= link_to "Code Fillet", home_index_path %></h1></title> |
 		<% if current_user %>
-		<%= link_to 'Create new CodeFillet', new_code_fillet_path(@code_fillet) %> 
+		<%= link_to 'Create new Code Fillet', new_code_fillet_path(@code_fillet) %> 
 		<% end %>	
 
 	</head>
@@ -16,8 +16,8 @@
 				<th><h2>Description</h2></th>
 				<% if current_user %>
 				<th><h2>Active</h2></th>
-				<% end %>
 				<th><h2>Action</h2></th>
+				<% end %>
 			</thead>
 			<tbody>
 
@@ -27,8 +27,8 @@
 					<td><%= link_to code_fillet.name, code_fillet_path(code_fillet)%></td>
 					<td><%= code_fillet.description%></td>
 					
-						<% if current_user %>
-						<td>
+					<% if current_user %>
+					<td>
 						<% if code_fillet.active? %>
 						<%= form_for code_fillet do |f|%>
 						<%= f.hidden_field :active, value: false %>
@@ -40,17 +40,18 @@
 						<%= f.submit "Publish"%>
 						<% end %>
 						<% end%>
-						</td>
-						<% end %>
+					</td>
+					<% end %>
 
-					
+					<% if current_user %>
 					<td><%= link_to "EDIT", edit_code_fillet_path(code_fillet) %></td>
-					<td><%= link_to "Destroy", code_fillet_path(code_fillet), method: :delete %></td>
+					<td><%= link_to "Destroy", code_fillet_path(code_fillet), :confirm => 'Are you sure?', method: :delete %></td>
+					<% end %>
 				</tr>
-				</tr>
-				<% end %>
-			</tbody>	
-		</table>
+			</tr>
+			<% end %>
+		</tbody>	
+	</table>
 
-	</body>
-	</html>
+</body>
+</html>

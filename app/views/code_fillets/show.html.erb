@@ -1,10 +1,14 @@
+<tittle><h1><%= link_to "Home Code Fillet's", home_index_path %></h1></title> 
+
 <h1>CODE FILET SHOW</h1>
 
 <h2><%= @code_fillet.name%></h2>
 <p><%= @code_fillet.description%></p>
 
-<%= link_to "Take me to all CodeFillet's", code_fillets_path %> |
+
 
 <% if current_user %>
-	<%= link_to "EDIT Code Fillet", edit_code_fillet_path(@code_fillet) %>
+<%= link_to "Take me to all my CodeFillet's", code_fillets_path %> |
+<%= link_to "EDIT Code Fillet", edit_code_fillet_path(@code_fillet) %> |
+<%= link_to "DESTROY", code_fillet_path(@code_fillet), :confirm => 'Are you sure?', method: :delete %>
 <% end %>

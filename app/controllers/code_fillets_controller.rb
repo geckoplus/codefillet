@@ -1,5 +1,5 @@
 class CodeFilletsController < ApplicationController
-  before_action :authenticate_user! , :only =>[:new,:edit]
+  before_action :authenticate_user! , :only =>[:new,:edit,:my]
   before_action :find_user, :only =>[:new,:create]
   before_action :find_code_fillet, :only =>[:show,:update,:destroy]
 
@@ -12,7 +12,12 @@ class CodeFilletsController < ApplicationController
   def active
    @code_fillets = CodeFillet.where(active: true)
    render :index
- end
+  end
+   
+  def my
+    @code_fillets = current_user.code_fillets
+    render :index
+  end 
 
 
   # GET /code_fillets/:id

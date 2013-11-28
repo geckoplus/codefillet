@@ -4,7 +4,9 @@ Codefillet::Application.routes.draw do
   resources :code_fillets do
      collection do
         get 'active'
+        get 'my'
      end
+
   end 
   
   root :to => "home#index"
