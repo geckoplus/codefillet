@@ -1,33 +1,43 @@
 <%= form_for @code_fillet do |f| %>
-  <% if @code_fillet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@code_fillet.errors.count, "error") %> prohibited this code fillet from being saved:</h2>
+<% if @code_fillet.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@code_fillet.errors.count, "error") %> prohibited this code fillet from being saved:</h2>
 
-      <ul>
-      <% @code_fillet.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+  <ul>
+    <% @code_fillet.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+
+<div class="field">
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :description %><br>
+  <%= f.text_area :description %>
+</div>
+
+<div class="field">
+  <%= f.label :active %><br>
+  <%= f.check_box :active, :checked =>false %>
+</div>
+</br>
+
+  <% Tag.all.each do |tag| %>
+  <%= hidden_field_tag "code_fillet[tags_ids][]", nil %>
+  <%= f.label tag.name %>
+  <%= check_box_tag "code_fillet[tags_ids][]",tag.id %>
   <% end %>
 
 
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= f.label :active %><br>
-    <%= f.check_box :active, :checked =>false %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>
+
+

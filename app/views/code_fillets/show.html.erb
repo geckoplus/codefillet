@@ -3,8 +3,17 @@
 <h1>CODE FILET SHOW</h1>
 
 <h2><%= @code_fillet.name%></h2>
-<p><%= @code_fillet.description%></p>
+<p><%= @code_fillet.description%></p> 
 
+<h2> Tags: </h2>
+<% if @tags.present? %>
+<% @tags.each do |tag|  %>
+<p>
+<%= tag %>
+</p>
+<% end %>
+
+<% end %>
 
 
 <% if current_user %>

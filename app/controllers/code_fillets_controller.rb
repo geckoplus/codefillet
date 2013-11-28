@@ -22,7 +22,8 @@ class CodeFilletsController < ApplicationController
 
   # GET /code_fillets/:id
   def show
-  	
+  	tags_ids = CodeTag.where(code_fillet_id: @code_fillet.id).pluck(:tag_id)
+    @tags = Tag.where(id: tags_ids).pluck(:name)
   end
 
   def new
@@ -30,9 +31,14 @@ class CodeFilletsController < ApplicationController
   end
 
   def create
+    puts "Ostatnio #{params}" 
     @code_fillet = @user.code_fillets.new permitted_params
     if @code_fillet.save
       #ZAPISALO 
+      tag_ids = params[:code_fillet][:tags_ids]
+      tag_ids.each do |t|
+          @code_fillet.code_tags.create(:tag_id =>t)  unless t.empty?
+      end  
       redirect_to @code_fillet
     else
       #NIE ZAPISALO

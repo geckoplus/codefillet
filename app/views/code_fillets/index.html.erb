@@ -16,6 +16,7 @@
 				<th><h2>Description</h2></th>
 				<% if current_user %>
 				<th><h2>Active</h2></th>
+				<th><h2>Tag</h2></th>
 				<th><h2>Action</h2></th>
 				<% end %>
 			</thead>
@@ -43,9 +44,11 @@
 					</td>
 					<% end %>
 
+					<td> </td>
+
 					<% if current_user %>
-					<td><%= link_to "EDIT", edit_code_fillet_path(code_fillet) %></td>
-					<td><%= link_to "Destroy", code_fillet_path(code_fillet), :confirm => 'Are you sure?', method: :delete %></td>
+					<td><%= link_to "EDIT", edit_code_fillet_path(code_fillet) %></td> |
+					<td><%= link_to "DESTROY", code_fillet_path(code_fillet), :confirm => 'Are you sure?', method: :delete %></td>
 					<% end %>
 				</tr>
 			</tr>
