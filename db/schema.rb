@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131127114205) do
+ActiveRecord::Schema.define(version: 20131128093743) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -40,6 +40,25 @@ ActiveRecord::Schema.define(version: 20131127114205) do
   end
 
   add_index "code_fillets", ["user_id"], name: "index_code_fillets_on_user_id"
+
+  create_table "code_tags", force: true do |t|
+    t.integer  "code_fillet_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "code_tags", ["code_fillet_id"], name: "index_code_tags_on_code_fillet_id"
+  add_index "code_tags", ["tag_id"], name: "index_code_tags_on_tag_id"
+
+  create_table "snippets", force: true do |t|
+    t.text     "content"
+    t.integer  "code_fillet_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "snippets", ["code_fillet_id"], name: "index_snippets_on_code_fillet_id"
 
   create_table "tags", force: true do |t|
     t.string   "name"

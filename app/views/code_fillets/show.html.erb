@@ -8,7 +8,7 @@
 
 
 <% if current_user %>
-<%= link_to "Take me to all my CodeFillet's", code_fillets_path %> |
+<%= link_to "Take me to all my CodeFillet's", my_code_fillets_path %> |
 <%= link_to "EDIT Code Fillet", edit_code_fillet_path(@code_fillet) %> |
 <%= link_to "DESTROY", code_fillet_path(@code_fillet), :confirm => 'Are you sure?', method: :delete %>
 <% end %>

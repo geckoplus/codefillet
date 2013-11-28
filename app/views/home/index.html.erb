@@ -5,7 +5,7 @@
 	<tittle><h1><%= link_to "Code Fillet", home_index_path %></h1></title> 
 		<% if current_user %>
 		<%= link_to 'Create new CodeFillet', new_code_fillet_path(@code_fillet) %> |
-		<%= link_to 'My Code Fillet', code_fillets_path(@code_fillet) %>
+		<%= link_to 'My Code Fillet', my_code_fillets_path(@code_fillet) %>
 		<% end %>
 
 	</head>
