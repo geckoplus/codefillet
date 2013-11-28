@@ -1,4 +1,8 @@
 Codefillet::Application.routes.draw do
+  devise_for :admins
+  
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  
   get "home/index"
   devise_for :users
   resources :code_fillets do

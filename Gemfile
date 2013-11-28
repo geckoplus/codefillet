@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 gem 'public_activity', github: 'pokonski/public_activity'
+gem 'rails_admin'
+
 
 
 

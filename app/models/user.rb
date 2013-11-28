@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
   has_many :code_fillets
-  has_many :votes 
+  #has_many :votes 
   
   validates_presence_of :username
   validates_length_of :username, :minimum=>3
